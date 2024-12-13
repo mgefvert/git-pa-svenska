@@ -1,8 +1,12 @@
 # Git på svenska
 
+Originalet finns på sidan https://github.com/bjorne/git-pa-svenska.
+De förändringar som jag har gjort är för att skapa en mer normal,
+levande och normativ ordlista, mer i linje med dagligt bruk.
+
 ## Introduktion
 
-Det dagliga språket för de olika kommandona i `git` (eller `jävel`) är
+Det dagliga språket för de olika kommandona i `git` är
 på svenska ett enda stort svengelskakalas. Jag finner mig själv ofta
 sägandes _"Kan du pusha branchen?"_ eller _"Jag pullar!"_, vilket
 känns pinsamt.
@@ -11,69 +15,68 @@ Detta dokument ämnar etablera en ren svensk jargong som kan användas
 på arbetsplatsen för att med fördel undvika pressade situationer med
 kollegor samt boskap.
 
-## Förslag
+## Konvention
 
 Nedan följer tabeller över verb och substantiv relaterade till git,
 deras nuvarande bruk samt förslag på hur vi tillsammans kan bättra
 oss.
 
-| Verb        | Nuvarande bruk | Förslag       |
-|-------------|----------------|---------------|
-| pull        | pulla          | rycka         |
-| push        | pusha          | knuffa        |
-| fetch       | fetcha         | hämta         |
-| branch      | brancha        | förgrena      |
-| commit      | commita        | förbinda      |
-| rebase      | rebasa         | ympa          |
-| merge       | merga          | sammanfoga    |
-| squash      | squasha        | mosa          |
-| stash       | stasha         | gömma         |
-| tag         | tagga          | märka         |
-| cherry-pick | cherry-picka   | plocka russin |
-| amend       | amenda         | rätta till    |
-| blame       | blamea         | klandra       |
+| Verb        | Tidigare bruk | Ny konvention    |
+|-------------|---------------|------------------|
+| pull        | pulla         | dra ner (1)      |
+| push        | pusha         | trycka ut/upp    |
+| fetch       | fetcha        | hämta            |
+| branch      | brancha       | skapa en ny gren |
+| commit      | commita       | checka in (2)    |
+| rebase      | rebasa        | ombasera         |
+| merge       | merga         | dra in (1)       |
+| squash      | squasha       | mosa in/samman   |
+| stash       | stasha        | gömma undan      |
+| tag         | tagga         | märka upp        |
+| cherry-pick | cherry-picka  | russinplocka     |
+| amend       | amenda        | justera          |
+| blame       | blamea        | klandra          |
 
-| Substantiv   | Nuvarande bruk | Förslag     |
-|--------------|----------------|-------------|
-| git          | git            | jävel       |
-| repository   | repo           | förvaring   |
-| branch       | branch         | gren        |
-| commit       | commit         | förbindelse |
-| pull request | pull request   | ryckbegäran |
-| stash        | stash          | gömma       |
-| tag          | tagg           | märke       |
+| Substantiv    | Tidigare bruk | Ny konvention       |
+|---------------|---------------|---------------------|
+| git           | git           | git (3)             |
+| repository    | repo          | kodkassun (4)       |
+| branch        | branch        | gren                |
+| commit        | commit        | incheckning         |
+| pull request  | pull request  | ryckbegäran (5)     |
+| stash         | stash         | kodgömma            |
+| tag           | tagg          | märke               |
+| main branch   | ?             | huvudgren, stam (6) |
+
+1) Medan engelskan gör skillnad mellan pull och merge, så används i svenskan hellre
+   olika riktadverb. Pull blir således "dra ner" (vertikal form, upp till eller ner från
+   molnet) medan merge blir "dra in" (horisontell form, från jämställda grenar).
+
+2) "Checka in" och "incheckning" är inte helt svenskt, men är ett vedertaget begrepp
+   både inom programmering, hotell, och näringsliv. Det finns liten anledning att ändra
+   det begreppet, även om "check-in" och "commit" inte är helt jämförbara.
+
+3) För att undvika svärord så bör inte "jävel" användas. Git är ett programvarusystem
+   och bör benämnas med sitt originalnamn.
+
+4) En kassun är en vattentät "kista" för grundläggning av byggnadsverk i vatten. Kan 
+   också användas i militära sammanhang för förvaring av vapen. Kodkassun känns som en
+   relevant beteckning istället för repository.
+
+5) Rycka rekommenderas inte längre som verb. Begreppet med ryckbegäran har dock satt sig,
+   och kan fortleva. Alternativet, "indragningsbegäran" eller "dragningsförfrågan" är
+   onödigt formellt.
+
+6) Medan stam är accepterbart, så är huvudtanken i git att det finns i princip ingen
+   unik stam utan allt är separata grenar. Det känns mer relevant att betrakta det som
+   en huvudgren i så fall. Båda förslagen bör dock fungera bra. "master" har i stort sett
+   ersatts med "main" vilket normalt översätts med "huvud-".
 
 ## Exempel
 
-    - Kan du rycka grenen jag just ympade och knuffa till github?
-
-    - Jag förgrenade alldeles nyss och förband ändringarna från min gömma där.
-
-    - Skicka en ryckbegäran när du är färdig med sammanfogningen!
-
-    - Låt oss plocka russin från mäster-grenen.
-    
-    - Hoppsan, jag råkade visst kraftknuffa mot mäster-grenen.. D:
-
-    - Mosa dina förbindelser innan du sammanfogar.
-
-## Dagligt bruk
-
-Nedan följer en rad kommandoradskommandon för att sätta upp en svensk
-gitmiljö. Avsaknaden av svenska tecken i täcknamnen beror på en brist i git
-(överväg att förbättra mjukvaran och skicka en ryckbegäran!). Följande
-kommandon ändrar din `~/.gitconfig` och kommer att verka globalt.
-
-    git config --global alias.ryck pull
-    git config --global alias.knuffa push
-    git config --global alias.gren branch
-    git config --global alias.forgrena branch
-    git config --global alias.forbinda commit
-    git config --global alias.ympa rebase
-    git config --global alias.sammanfoga merge
-    git config --global alias.gom stash
-    git config --global alias.klandra blame
-    git config --global alias.marke tag
-    git config --global alias.mark tag
-
-    alias jävel=git
+- Kan du dra in grenen jag just ombaserade och trycka ut den till github?
+- Jag skapade en ny gren alldeles nyss och drog in ändringarna från min kodgömma där.
+- Skicka en ryckbegäran när du är färdig med din indragning!
+- Låt oss plocka russin från huvudgrenen.
+- Hoppsan, jag råkade visst tvinga en uttryckning mot huvudgrenen.. :D
+- Mosa samman dina incheckningar innan du drar in dem.
